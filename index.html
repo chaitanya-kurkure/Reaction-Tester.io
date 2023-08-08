@@ -1,0 +1,55 @@
+<html>
+<head>
+    <title>Reaction-Tester</title>
+    <style>
+        #box{
+            background-color: brown;
+            height: 150px;
+            width: 150px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reaction-Tester</h1>
+    <p>Click on the box as much faster as you can</p>
+    <div id="box"></div>
+    <script>
+        var start = new Date().getTime();
+        function getrandomcolor (){
+            var letter = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++){
+                color += letter[Math.floor(Math.random()* 16)]
+        }
+        return color;
+        }
+        function move(){
+            var left;
+            var top;
+            var wh;
+            left = Math.random() * 1200;
+            right = Math.random() * 1200
+            top = Math.random() * 500
+            wh = (( Math.random*1000) + 100)
+            document.getElementById("box").style.left = left ;
+            document.getElementById("box").style.top = top ;
+            document.getElementById("box").style.width = wh ;
+            document.getElementById("box").style.height = wh ;
+            document.getElementById("box").style.display = "block" ;
+            document.getElementById("box").style.backgroundColor= getrandomcolor() ;
+            start = new Date().getTime();
+        }
+        move();
+        document.getElementById("box").onclick= function() {
+            document.getElementById("box").style.display = "none";
+            var end = new Date().getTime();
+            var totaltime = ( end - start) / 1000
+            alert(totaltime);
+            move();
+        }
+
+
+    </script>
+</body>
+</html>
